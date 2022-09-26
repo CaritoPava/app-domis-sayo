@@ -1,11 +1,13 @@
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StackNavigatorLogin } from './src/navigator/StackNavigatorLogin';
 
-export const App: React.FC<{}> = () => {
+const App = () => {
   return (
-    <View>
-      <Text>aAPLICACION DE DOMIS DE SAYO</Text>
-    </View>
+    <NavigationContainer>
+      <StackNavigatorLogin />
+    </NavigationContainer>
   );
 };
 
