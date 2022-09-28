@@ -14,8 +14,16 @@ export const Login = ({ navigation }: Props) => {
     password: '',
   });
 
-  console.log(userName, password, 'data user');
+  // validacion provicional
 
+  const handleLogin = () => {
+    if (userName === 'admin' && password === 'admin') {
+      const token = '123456789';
+      navigation.navigate('Home', { token });
+    } else {
+      navigation.navigate('ChangePassword');
+    }
+  };
 
   return (
     <SafeAreaView >
@@ -54,15 +62,20 @@ export const Login = ({ navigation }: Props) => {
               style={styles.inputs}
               keyboardType="visible-password"
               placeholder="Contraseña" />
-            <View style={loginStyles.loginContainerForgottenPassword}>
-              <Text style={loginStyles.text}>Olvidaste tu contraseña?</Text>
-            </View>
+            <TouchableNativeFeedback
+              onPress={() => navigation.navigate('ForgotPassword')}
+              style={loginStyles.buttonRegister}
+            >
+              <View style={loginStyles.loginContainerForgottenPassword}>
+                <Text style={loginStyles.text}>Olvidaste tu contraseña?</Text>
+              </View>
+            </TouchableNativeFeedback>
           </View>
           <View style={loginStyles.loginContainerButtons}>
             <ButtonRed
               text="Iniciar Sesión"
               color="#7a1520"
-              onPress={() => console.log('Iniciar Sesión')}
+              onPress={() => handleLogin()}
             />
           </View>
           <View style={loginStyles.loginContainerRegister}>

@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { KeyboardAvoidingView, Platform, StatusBar, Text, TextInput, View, TouchableNativeFeedback, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Text, View, Platform, StatusBar, TextInput, TouchableNativeFeedback, StyleSheet } from 'react-native';
 import { useForm } from '../hooks/useForm';
 import { ScrollView } from 'react-native-gesture-handler';
 import { styles } from '../theme/appTheme';
@@ -10,11 +10,17 @@ import { ButtonRed } from '../components/ButtonRed';
 
 interface Props extends StackScreenProps<any, any> { }
 
-export const ForgotPassword = ({ navigation }: Props) => {
+export const ChangePassword = ({ navigation }: Props) => {
 
-  const { identificationNumber, onChange } = useForm({
-    identificationNumber: '',
+  const { password1, password2, onChange } = useForm({
+    password1: '',
+    password2: '',
   });
+
+  const changePassword = () => {
+    console.log('Change password');
+    navigation.navigate('Login');
+  };
 
 
   return (
@@ -30,27 +36,37 @@ export const ForgotPassword = ({ navigation }: Props) => {
             <Text
               style={registerStyles.title}
             >
-              Olvidaste tu contraseña
+              Crear nueva contraseña
             </Text>
 
           </View>
 
           <View style={registerStyles.registerContainerInputs} >
-            <Text style={registerStyles.textLabel}>Nombre</Text>
+            <Text style={registerStyles.textLabel}>Escribe tu contraseña</Text>
             <TextInput
-              value={identificationNumber}
+              value={password1}
               autoCorrect={false}
-              onChangeText={(value) => onChange(value, 'identificationNumber')}
+              onChangeText={(value) => onChange(value, 'password1')}
               autoCapitalize="none"
               style={styles.inputs}
-              keyboardType="numeric"
+              keyboardType="visible-password"
             />
+            <Text style={registerStyles.textLabel}>Vuelve a escribirtu contraseña</Text>
+            <TextInput
+              value={password2}
+              autoCorrect={false}
+              onChangeText={(value) => onChange(value, 'password2')}
+              autoCapitalize="none"
+              style={styles.inputs}
+              keyboardType="visible-password"
+            />
+
           </View>
           <View style={registerStyles.registerContainerButtons}>
             <ButtonRed
-              text="Recuperar contraseña"
+              text="Nueva contraseña"
               color="#7a1520"
-              onPress={() => console.log('Recuperar contraseña')}
+              onPress={() => changePassword()}
             />
           </View>
         </View>

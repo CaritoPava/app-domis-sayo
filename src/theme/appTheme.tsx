@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export const colors = {
   rojoSayonara: '#d62a2d',
   barbecue: '#7a1520',
+  barbecueDark: '#670712',
   naranja: '#e94e1b',
   naranjaClaro: '#ec671a',
   amarillo: '#FDC533',

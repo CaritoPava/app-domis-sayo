@@ -3,6 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StackNavigatorLogin } from './src/navigator/StackNavigatorLogin';
 
+
+
+
 const App = () => {
   return (
     <NavigationContainer>

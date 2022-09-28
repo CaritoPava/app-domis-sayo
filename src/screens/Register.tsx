@@ -16,6 +16,8 @@ export const Register = ({ navigation }: Props) => {
     email: '',
     password: '',
   });
+
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
