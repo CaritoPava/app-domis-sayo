@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { KeyboardAvoidingView, Text, View, Platform, StatusBar, TextInput, TouchableNativeFeedback, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Text, View, Platform, StatusBar, TextInput, TouchableNativeFeedback, StyleSheet, Alert } from 'react-native';
 import { useForm } from '../hooks/useForm';
 import { ScrollView } from 'react-native-gesture-handler';
 import { styles } from '../theme/appTheme';
@@ -18,8 +18,43 @@ export const ChangePassword = ({ navigation }: Props) => {
   });
 
   const changePassword = () => {
-    console.log('Change password');
-    navigation.navigate('Login');
+
+    if (password1 !== password2) {
+      Alert.alert(
+        'Las contraseñas no coinciden',
+        'Por favor, verifique que las contraseñas sean iguales', [
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('ChangePassword'),
+          style: 'cancel',
+        },
+      ]
+      );
+    }
+    if (password1.length < 6) {
+      Alert.alert(
+        'La contraseña debe tener al menos 6 caracteres',
+        'Por favor, verifique que la contraseña tenga al menos 6 caracteres', [
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('ChangePassword'),
+          style: 'cancel',
+        },
+      ]
+      );
+    } else {
+      Alert.alert(
+        'Contraseña cambiada',
+        'La contraseña ha sido cambiada correctamente', [
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate('Login'),
+          style: 'default',
+        },
+      ]
+      );
+      console.log(password1);
+    }
   };
 
 
@@ -51,13 +86,14 @@ export const ChangePassword = ({ navigation }: Props) => {
               style={styles.inputs}
               keyboardType="visible-password"
             />
-            <Text style={registerStyles.textLabel}>Vuelve a escribirtu contraseña</Text>
+            <Text style={registerStyles.textLabel}>Vuelve a escribir tu contraseña</Text>
             <TextInput
               value={password2}
               autoCorrect={false}
               onChangeText={(value) => onChange(value, 'password2')}
               autoCapitalize="none"
               style={styles.inputs}
+              textContentType="password"
               keyboardType="visible-password"
             />
 

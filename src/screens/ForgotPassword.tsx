@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { KeyboardAvoidingView, Platform, StatusBar, Text, TextInput, View, TouchableNativeFeedback, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Platform, StatusBar, Text, TextInput, View, TouchableNativeFeedback, StyleSheet, Alert } from 'react-native';
 import { useForm } from '../hooks/useForm';
 import { ScrollView } from 'react-native-gesture-handler';
 import { styles } from '../theme/appTheme';
@@ -16,7 +16,20 @@ export const ForgotPassword = ({ navigation }: Props) => {
     identificationNumber: '',
   });
 
+  const handleForgotPassword = () => {
+    console.log(identificationNumber);
+    Alert.alert(
+      'Contraseña enviada',
+      'La contraseña ha sido enviada a su correo electronico', [
+      {
+        text: 'OK',
+        onPress: () => navigation.navigate('Login'),
+        style: 'default',
+      },
+    ]
+    );
 
+  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -50,7 +63,7 @@ export const ForgotPassword = ({ navigation }: Props) => {
             <ButtonRed
               text="Recuperar contraseña"
               color="#7a1520"
-              onPress={() => console.log('Recuperar contraseña')}
+              onPress={() => handleForgotPassword()}
             />
           </View>
         </View>
