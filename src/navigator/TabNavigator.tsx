@@ -15,7 +15,6 @@ const Tab = createMaterialBottomTabNavigator();
 export const TabNavigator = () => {
   return (
     <Tab.Navigator
-      sceneAnimationEnabled={true}
       barStyle={{ backgroundColor: 'white' }}
       activeColor={colors.barbecue}
       screenOptions={({ route }) => ({

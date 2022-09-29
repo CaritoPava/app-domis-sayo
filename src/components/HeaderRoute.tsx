@@ -6,18 +6,19 @@ interface Props {
   img: string;
   name: string;
   color: string;
-  pdv?: string | null;
 }
 
-export const HeaderInfo = ({ img, name, color, pdv = null }: Props) => {
+export const HeaderRoute = ({ img, name, color }: Props) => {
   return (
     <View style={styles.container}>
+      <View style={styles.containerTitle}>
+        <Text style={styles.text}>- domis -</Text>
+      </View>
       <View style={{ ...styles.containerInfo, backgroundColor: color }}>
         <View >
           <Image source={{ uri: img }} style={styles.imgDomi} />
         </View>
         <Text style={styles.text}>{name}</Text>
-        {pdv && <Text style={{ ...styles.text, fontSize: 15 }}>{pdv}</Text>}
       </View>
     </View>
   );
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.barbecue,
     alignItems: 'center',
     justifyContent: 'center',
-    height: '25%',
+    height: '30%',
 
   },
   containerTitle: {
