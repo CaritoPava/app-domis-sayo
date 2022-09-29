@@ -8,17 +8,17 @@ interface Data {
 
 }
 
-const dataPDVs = [
+const dataPDVs: Array<Data> = [
   {
-    id: '1',
+    id: 1,
     name: 'Circunvalar',
   },
   {
-    id: '2',
+    id: 2,
     name: 'Arboleda',
   },
   {
-    id: '3',
+    id: 3,
     name: 'Pereira Plaza',
   },
 ];
@@ -29,7 +29,7 @@ const NamesPDVs = ({ name }) => (
   </View>
 );
 
-export const SelectionList = () => {
+export const RenderList = () => {
 
   const renderItem = ({ item }) => (
     <NamesPDVs name={item.name} />
